@@ -26,14 +26,14 @@ def open_web_page():
             # Running as a script, go up from src/ to the project root
             base_path = pathlib.Path(__file__).parent.parent
 
-        web_file_path = base_path / 'web' / 'index.html'
+        web_file_path = base_path / 'docs' / 'index.html'
 
         if web_file_path.exists():
             print(f"Opening help page from: {web_file_path.resolve()}")
             webbrowser.open(f'file://{web_file_path.resolve()}')
         else:
             print(f"Error: Could not find the help file at '{web_file_path}'.")
-            print("Please ensure the 'web' folder is in the same directory as the executable.")
+            print("Please ensure the 'docs' folder is in the same directory as the executable.")
     except Exception as e:
         print(f"An error occurred while trying to open the web page: {e}")
 

@@ -7,7 +7,7 @@ La herramienta **no descarga ni instala drivers**, sino que actúa como un compl
 ## Estructura del Proyecto
 
 - `src/driver_analyzer.py`: El script principal de Python que contiene toda la lógica de análisis.
-- `web/`: Carpeta que contiene la página web explicativa (`index.html` y `style.css`).
+- `docs/`: Carpeta que contiene la página web explicativa (`index.html` y `style.css`) para GitHub Pages.
 - `README.md`: Este archivo.
 
 ## Características
@@ -71,7 +71,7 @@ Para crear un ejecutable independiente que puedas distribuir, puedes usar `PyIns
 
 ## Página Web Explicativa
 
-El proyecto incluye una página web (`web/index.html`) que explica en detalle qué hace la herramienta, cómo funciona y las advertencias de seguridad. Es recomendable distribuir el enlace a esta página junto con el ejecutable para que los usuarios finales comprendan su propósito y limitaciones.
+El proyecto incluye una página web (`docs/index.html`) que explica en detalle qué hace la herramienta, cómo funciona y las advertencias de seguridad. Es recomendable distribuir el enlace a esta página junto con el ejecutable para que los usuarios finales comprendan su propósito y limitaciones.
 
 ## Aviso Legal
 
