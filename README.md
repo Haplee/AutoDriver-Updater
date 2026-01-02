@@ -1,78 +1,41 @@
-# Analizador de Drivers para Windows
+# PowerShell Driver Analysis Script
 
-Este proyecto contiene una herramienta de línea de comandos desarrollada en Python para analizar el estado de los drivers en un sistema operativo Windows. El ejecutable identifica drivers que pueden estar desactualizados, detenidos o sin firmar, y genera un informe de texto.
+A simple and safe PowerShell script to analyze Windows drivers and identify potential issues.
 
-La herramienta **no descarga ni instala drivers**, sino que actúa como un complemento a Windows Update, proporcionando una visión detallada para que el usuario pueda tomar decisiones informadas.
+This script uses the native `driverquery` command to gather information about installed drivers, focusing on those that are stopped or unsigned. It then generates a clean, readable text report named `Driver-Report.txt`.
 
-## Estructura del Proyecto
+This tool is a supplement to, not a replacement for, Windows Update.
 
-- `src/driver_analyzer.py`: El script principal de Python que contiene toda la lógica de análisis.
-- `docs/`: Carpeta que contiene la página web explicativa (`index.html` y `style.css`) para GitHub Pages.
-- `README.md`: Este archivo.
+## Features
 
-## Características
+-   **Clean and Simple**: A single, well-structured PowerShell script.
+-   **Administrator Check**: Automatically verifies if it's running with the required admin privileges.
+-   **Robust Parsing**: Uses PowerShell's native CSV conversion for reliable, language-agnostic driver analysis.
+-   **Detailed Report**: Creates `Driver-Report.txt` with a summary of stopped and unsigned drivers, along with safe recommendations.
+-   **Read-Only**: The script does not modify any system files or settings.
 
-- **Análisis Detallado**: Ejecuta `driverquery /v` para obtener una lista completa de drivers, incluyendo su estado, fabricante, versión y fecha.
-- **Verificación de Firmas**: Utiliza `driverquery /si` para identificar drivers que no están firmados digitalmente.
-- **Informe Automático**: Genera un archivo `report.txt` con un resumen de los drivers que requieren atención.
-- **Seguridad**: No modifica el sistema. Su función es únicamente de lectura y reporte.
-- **Requisito de Administrador**: Verifica si se está ejecutando con los privilegios necesarios para acceder a la información del sistema.
+## How to Use
 
-## ¿Cómo Usarlo?
+### 1. Adjust Execution Policy (One-time setup)
 
-### Requisitos Previos
+By default, Windows prevents the execution of PowerShell scripts. To run this script, you may need to change the execution policy for your user account.
 
-- Python 3.x
-- El módulo `pyinstaller` si deseas compilar el ejecutable. Puedes instalarlo con:
-  ```
-  pip install pyinstaller
-  ```
+1.  Open PowerShell (you can search for it in the Start Menu).
+2.  Run the following command to allow scripts to run for your user account only:
+    ```powershell
+    Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+    ```
+3.  When prompted, press `Y` and then `Enter` to confirm.
 
-### Ejecutar el Script
+### 2. Run the Script
 
-Existen dos modos de ejecución:
+1.  Download the `Analyze-Drivers.ps1` script to your computer.
+2.  Right-click the `Analyze-Drivers.ps1` file.
+3.  Select **Run with PowerShell**. Windows will prompt you for administrator permissions.
+4.  The script will open a PowerShell window, perform the analysis, and display its progress.
+5.  Once complete, the window will close automatically after a few seconds.
+6.  A file named `Driver-Report.txt` will be created in the same folder where you saved the script.
 
-**1. Análisis de Drivers (requiere administrador)**
+## Disclaimer
 
-1. Abre una terminal (PowerShell o CMD) **como administrador**.
-2. Navega al directorio raíz del proyecto.
-3. Ejecuta el script:
-   ```
-   python src/driver_analyzer.py
-   ```
-4. El análisis comenzará y los resultados se mostrarán en la consola. Al finalizar, encontrarás un archivo `report.txt` en el mismo directorio.
-
-**2. Ver la Página de Ayuda (no requiere administrador)**
-
-1. Abre una terminal normal.
-2. Navega al directorio raíz del proyecto.
-3. Ejecuta el script con el siguiente argumento:
-   ```
-   python src/driver_analyzer.py --view-web
-   ```
-4. Se abrirá la página web explicativa en tu navegador por defecto.
-
-### Compilar el `.exe`
-
-Para crear un ejecutable independiente que puedas distribuir, puedes usar `PyInstaller`.
-
-1. Asegúrate de tener PyInstaller instalado.
-2. Abre una terminal (no es necesario que sea como administrador para compilar).
-3. Navega al directorio raíz del proyecto.
-4. Ejecuta el siguiente comando:
-   ```
-   pyinstaller --onefile --console --name DriverAnalyzer src/driver_analyzer.py
-   ```
-   - `--onefile`: Empaqueta todo en un único archivo `.exe`.
-   - `--console`: Asegura que la aplicación se ejecute en una ventana de consola, lo cual es necesario para ver la salida del script.
-   - `--name DriverAnalyzer`: Asigna un nombre al ejecutable final.
-
-5. Una vez finalizado el proceso, encontrarás el archivo `DriverAnalyzer.exe` dentro de la carpeta `dist`.
-
-## Página Web Explicativa
-
-El proyecto incluye una página web (`docs/index.html`) que explica en detalle qué hace la herramienta, cómo funciona y las advertencias de seguridad. Es recomendable distribuir el enlace a esta página junto con el ejecutable para que los usuarios finales comprendan su propósito y limitaciones.
-
-## Aviso Legal
-
-Esta herramienta se proporciona "tal cual". El uso del programa es bajo la total responsabilidad del usuario. No se ofrecen garantías y el desarrollador no se hace responsable de ningún daño que pueda surgir de su uso.
+This script is provided "as is" without any warranty. Use it at your own risk. The author is not responsible for any damage that may result from its use.
