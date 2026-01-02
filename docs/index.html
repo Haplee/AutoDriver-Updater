@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AutoDriver Updater – Analizador de Drivers para Windows</title>
+
+    <!-- SEO -->
+    <meta name="description" content="AutoDriver Updater es una herramienta de diagnóstico para Windows que analiza el estado de los controladores sin instalar ni modificar el sistema.">
+    <meta name="keywords" content="Windows drivers, driver analyzer, Windows diagnostics, AutoDriver Updater">
+    <meta name="author" content="Haplee">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <h1>AutoDriver Updater</h1>
+        <p class="subtitle">
+            Herramienta de análisis y diagnóstico de controladores para Windows
+        </p>
+
+        <!-- GitHub Badges -->
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main class="content">
+
+        <section>
+            <h2>Descripción General</h2>
+            <p>
+                AutoDriver Updater es una herramienta ejecutable para sistemas Windows diseñada para analizar
+                el estado de los controladores instalados. Proporciona información técnica detallada utilizando
+                exclusivamente datos ofrecidos por el propio sistema operativo.
+            </p>
+            <p>
+                La aplicación no instala, descarga ni modifica controladores o archivos del sistema, actuando
+                únicamente como una utilidad de consulta y diagnóstico.
+            </p>
+        </section>
+
+        <section>
+            <h2>Objetivo del Proyecto</h2>
+            <p>
+                El objetivo principal de esta herramienta es facilitar la identificación de posibles
+                incidencias relacionadas con los controladores del sistema, incluyendo:
+            </p>
+            <ul>
+                <li>Controladores desactualizados.</li>
+                <li>Drivers detenidos o con estados anómalos.</li>
+                <li>Controladores sin firma digital verificada.</li>
+            </ul>
+            <p>
+                AutoDriver Updater <strong>no sustituye a Windows Update</strong>, sino que lo complementa,
+                ofreciendo una visión más técnica y detallada para tareas de diagnóstico.
+            </p>
+        </section>
+
+        <section>
+            <h2>Funcionamiento Interno</h2>
+            <p>
+                La herramienta se basa en comandos nativos del sistema operativo Windows:
+            </p>
+            <ul>
+                <li>
+                    <code>driverquery /v</code>  
+                    <p>
+                        Obtiene un listado completo de los controladores instalados, incluyendo su estado,
+                        proveedor, versión y fecha.
+                    </p>
+                </li>
+                <li>
+                    <code>driverquery /si</code>  
+                    <p>
+                        Identifica los controladores que no cuentan con una firma digital verificada por Microsoft.
+                        Esto no implica necesariamente un riesgo, pero puede ser relevante en sistemas inestables.
+                    </p>
+                </li>
+            </ul>
+            <p>
+                AutoDriver Updater ejecuta estos comandos, procesa su salida y presenta los resultados
+                de forma clara y estructurada.
+            </p>
+        </section>
+
+        <section>
+            <h2>Requisitos del Sistema</h2>
+            <ul>
+                <li><strong>Sistema operativo:</strong> Windows 10 / Windows 11</li>
+                <li><strong>Permisos:</strong> Ejecución con privilegios de administrador</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Modo de Uso</h2>
+            <ol>
+                <li>Descargar el archivo ejecutable <code>DriverAnalyzer.exe</code>.</li>
+                <li>Ejecutarlo como administrador.</li>
+                <li>Esperar a que finalice el análisis.</li>
+                <li>Revisar los resultados mostrados en la consola.</li>
+                <li>Consultar el archivo <code>report.txt</code> generado automáticamente.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Consideraciones de Seguridad</h2>
+            <ul>
+                <li>
+                    <strong>No instala ni descarga controladores:</strong>
+                    la herramienta no realiza cambios en el sistema.
+                </li>
+                <li>
+                    <strong>Uso de fuentes oficiales:</strong>
+                    cualquier actualización debe realizarse únicamente desde Windows Update
+                    o los sitios oficiales de los fabricantes.
+                </li>
+                <li>
+                    <strong>Herramienta de solo lectura:</strong>
+                    no modifica archivos ni configuraciones del sistema operativo.
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <p>
+            Este software se proporciona “tal cual”, sin garantías de ningún tipo.
+            El uso de la herramienta es responsabilidad exclusiva del usuario.
+            El desarrollador no se hace responsable de daños derivados de su uso
+            o de la interpretación de los resultados.
+        </p>
+    </footer>
+
+</body>
+</html>
