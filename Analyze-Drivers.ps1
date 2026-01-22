@@ -50,8 +50,8 @@ catch {
 Write-Host "Driver query complete. Analyzing data..."
 
 # 3. Analyze the Driver Data
-$stoppedDrivers = $allDrivers | Where-Object { $_.State -eq 'Stopped' }
-$unsignedDrivers = $signedDriversInfo | Where-Object { $_.IsSigned -eq 'False' }
+$stoppedDrivers = $allDrivers.Where({ $_.State -eq 'Stopped' })
+$unsignedDrivers = $signedDriversInfo.Where({ $_.IsSigned -eq 'False' })
 
 # 4. Generate the Report
 Write-Host "Generating report file: $ReportFile"
